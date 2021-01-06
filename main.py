@@ -1,8 +1,10 @@
+import os
+
 import cv2
 from sklearn import datasets
-from sklearn import metrics
 from sklearn.naive_bayes import GaussianNB
 import numpy as np
+
 
 dataset = datasets.load_iris()
 model = GaussianNB()
@@ -26,5 +28,5 @@ img_two_test = cv2.imread('numbers\\two.jpg', cv2.IMREAD_GRAYSCALE)
 img_binary_two_test = np.array(cv2.threshold(img_two_test, thresh, 255, cv2.THRESH_BINARY)[1]).ravel()
 
 
-model.fit([img_binary_one,img_binary_two], [1,2])
+model.fit([img_binary_one,img_binary_two], ['jedna','dva'])
 print(model.predict(img_binary_two_test.reshape(1, -1)))
